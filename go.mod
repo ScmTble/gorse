@@ -1,4 +1,4 @@
-module github.com/scmtble/gorse
+module github.com/ScmTble/gorse
 
 go 1.20
 
