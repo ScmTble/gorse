@@ -41,6 +41,10 @@ func (c *GorseClient) GetRecommendOffset(ctx context.Context, userId string, cat
 	return request[[]string, any](ctx, c, "GET", c.entryPoint+fmt.Sprintf("/api/recommend/%s/%s?n=%d&offset=%d", userId, category, n, offset), nil)
 }
 
+func (c *GorseClient) GetLatestOffset(ctx context.Context, userId string, category string, n, offset int) ([]string, error) {
+	return request[[]string, any](ctx, c, "GET", c.entryPoint+fmt.Sprintf("/api/latest/%s?n=%d&offset=%d&user-id=%s", category, n, offset, userId), nil)
+}
+
 func (c *GorseClient) SessionRecommend(ctx context.Context, feedbacks []Feedback, n int) ([]Score, error) {
 	return request[[]Score](ctx, c, "POST", c.entryPoint+fmt.Sprintf("/api/session/recommend?n=%d", n), feedbacks)
 }
